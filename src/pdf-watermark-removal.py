@@ -31,7 +31,7 @@ import logging
 
 import img2pdf
 from PIL import Image
-from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfReader
 
 
 def is_gray(a, b, c):
@@ -110,7 +110,7 @@ def main():
         os.makedirs(directory)
 
     images_path = []
-    pdf = PdfFileReader(open(args.input_pdf_path, "rb"))
+    pdf = PdfReader(open(args.input_pdf_path, "rb"))
     for i in range(0, pdf.getNumPages()):
         logger.info("Processing page {}/{}".format(i + 1, pdf.getNumPages()))
         images_path.append("./temp/{}.jpg".format(i))
